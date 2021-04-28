@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Backend Developer Challenge</title>
+    <script crossorigin="anonymous" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css?family=Lato:300,400,500|Open+Sans:300,400,500, 700|Roboto:300,400,500&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="./ico/shopify.png" />
+    <link rel="stylesheet" href="./css/formStyles.css">
+    <link rel="stylesheet" href="./css/kiosk.css">
+    <link rel="stylesheet" href="./css/pop-up.css">
+</head>
+
+<body class="removeKioskResults">
+    <div class="pop-up-bg popup-kiosk-bg">
+        <div class="pop-up">
+            <div class="popup-header">
+                <div class="text">Edit Transaction</div>
+                <div class="image">
+                    <img src="./Ico/remove-from-group.svg" alt="">
+                </div>
+            </div>
+            <div class="popup-body popup-kiosk-body">
+                <div class="desc icon-image">
+                    <img src="./img/aurora-borealis.jpeg" alt="">
+                    <div>
+                        <div>
+                            <b>Item ID: </b> <span>47819</span>
+                        </div>
+                        <div>
+                            <b>Description: </b> <span>AF Baseline HL Short Powderkeg Blue AFS Deprecated Steeltown
+                                Gold</span>
+                        </div>
+                        <div>
+                            <b>Model Number: </b> <span>559909-100</span>
+                        </div>
+                    </div>
+                </div>
+                <div><b>Size:</b> M</div>
+                <div class="qty-row">
+                    <b>Quantity:</b>
+                    <div class="input-field">
+                        <input type="text" style="text-align: center;" id="qty" required value="1">
+                    </div>
+                    <div class="black-square-container">
+                        <div class="black-square" style="padding: 4px;">+</div>
+                        <div class="black-square">-</div>
+                    </div>
+                </div>
+                <div class="custom-select sport no-label" style="width:200px; padding: 0px; margin: 0px;">
+                    <label for="Comment Type" style="font-size: 10px;">&nbsp;</label>
+                    <select name="Sport">
+                        <option value="default">Comment Type</option>
+                        <option value="baseball">Baseball</option>
+                        <option value="basketball-m">Basketball, Men's
+                        </option>
+                        <option value="basketball-w">Basketball, Women's
+                        </option>
+
+                    </select>
+
+                </div>
+                <div class="textarea" style="position: relative; height: 150px;  width: 100%; margin-top: 1rem;">
+                    <label for="Item Description" style="position: absolute; top: 0rem; left: 0.5rem; font-size: 12px;color: #999999!important;
+              ">Comment
+                    </label>
+                    <textarea name="" id="" cols="30" rows="10" style="padding: 0rem; position: absolute; background-color: transparent; top: 0; left: 0; height: 100%; width: 100%; outline: none; border: none; resize: none;  border-radius: 3px;
+                border: solid 1px #cccccc; padding: 1.25rem 0.5rem;   font-family: 'Roboto', sans-serif;"></textarea>
+                </div>
+            </div>
+            <div class="popup-footer">
+                <div class="footer-text">
+                    Created - Coach Carrigan 04/17/2019 at 2:53PM
+                </div>
+
+                <div class="footer-buttons" style="display: flex; flex-direction: row;">
+                    <div class="blue-text-button">
+                        Cancel
+                    </div>
+                    <div class="blue-button">
+                        Save
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="kiosk-section">
+        <div class="header flex-spacebetween">
+            <div class="menu flex-spacebetween">
+                <div style="width:auto; display: inline-block; padding-right: 30px; margin-left: 20px; font-size:1.5rem;">
+                    Cart
+                </div>
+            </div>
+            <a href="./dashboard.html" class="cancel-border">
+                <div class="cancel">
+                    <img src="./ico/remove-from-group.svg" alt="">
+                </div>
+            </a>
+        </div>
+        <div class="body">
+            <section class="none-selected-results">
+                <div class="results">
+                    <table>
+                        <tr>
+                            <th>Item Photo</th>
+                            <th>Description/Comments</th>
+                            <th>Size</th>
+                            <th>Now On-Hand</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="./img/aurora-borealis.jpeg" alt="Cloth" class="item-photo">
+                            </td>
+                            <td>
+                                <div>559909-100</div>
+                                <div> Baseline HL Short Powderkeg Blue AFS</div>
+                                <div> Depreciated Steeltown Gold</div>
+                                <div>Bowl Award | Champions</div>
+                            </td>
+                            <td>M</td>
+                            <td>48</td>
+                            <td>- 2 +</td>
+                            <td>$37.50</td>
+                            <td>$75.00</td>
+                            <td>
+                                <img class="show-popup" src="./ico/edit-pen.svg" alt="Edit Pen">
+                            </td>
+                            <td>
+                                <img src="./ico/remove-from-group.svg" alt="Remove">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="./img/aurora-borealis.jpeg" alt="Cloth" class="item-photo">
+                            </td>
+                            <td>
+                                <div>559909-100</div>
+                                <div> Baseline HL Short Powderkeg Blue AFS</div>
+                                <div> Depreciated Steeltown Gold</div>
+                                <div>Bowl Award | Champions</div>
+                            </td>
+                            <td>M</td>
+                            <td>48</td>
+                            <td>- 2 +</td>
+                            <td>$37.50</td>
+                            <td>$75.00</td>
+                            <td>
+                                <img class="show-popup" src="./ico/edit-pen.svg" alt="Edit Pen">
+                            </td>
+                            <td>
+                                <img src="./ico/remove-from-group.svg" alt="Remove">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="./img/aurora-borealis.jpeg" alt="Cloth" class="item-photo">
+                            </td>
+                            <td>
+                                <div>559909-100</div>
+                                <div> Baseline HL Short Powderkeg Blue AFS</div>
+                                <div> Depreciated Steeltown Gold</div>
+                                <div>Bowl Award | Champions</div>
+                            </td>
+                            <td>M</td>
+                            <td>48</td>
+                            <td>- 2 +</td>
+                            <td>$37.50</td>
+                            <td>$75.00</td>
+                            <td>
+                                <img class="show-popup" src="./ico/edit-pen.svg" alt="Edit Pen">
+                            </td>
+                            <td>
+                                <img src="./ico/remove-from-group.svg" alt="Remove">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="./img/aurora-borealis.jpeg" alt="Cloth" class="item-photo">
+                            </td>
+                            <td>
+                                <div>559909-100</div>
+                                <div> Baseline HL Short Powderkeg Blue AFS</div>
+                                <div> Depreciated Steeltown Gold</div>
+                                <div>Bowl Award | Champions</div>
+                            </td>
+                            <td>M</td>
+                            <td>48</td>
+                            <td>- 2 +</td>
+                            <td>$37.50</td>
+                            <td>$75.00</td>
+                            <td>
+                                <img class="show-popup" src="./ico/edit-pen.svg" alt="Edit Pen">
+                            </td>
+                            <td>
+                                <img src="./ico/remove-from-group.svg" alt="Remove">
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="conclusion">
+                        <span class="result">
+                            Qty 6
+                        </span>
+                        <span class="result">
+                            Total $37.50
+                        </span>
+                        <div class="btn issue-show-toast">
+                            Issue & Receipt
+                        </div>
+                        <div class="btn issue-show-toast">
+                            Issue
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="success-toast">
+        Items issued successfully to Henry Aaron.
+    </div>
+    <script src="./js/app.js"></script>
+    <script src="./js/kiosk.js"></script>
+</body>
+
+</html>
