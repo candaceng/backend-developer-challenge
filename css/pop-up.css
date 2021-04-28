@@ -1,0 +1,402 @@
+.pop-up-bg,.pop-up-bg-for-return, .pop-up-bg-out-to-recon, .pop-up-bg-back-from-recon, .popup-kiosk-bg, .popup-kiosk-bg-comments{
+    overflow: hidden;
+    height: calc(100vh - 60px);
+    width: 100vw;
+    background-color: rgba(10, 10, 10, 0.5);
+    position: fixed;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    display: none;
+}
+
+.popup-kiosk-bg, .popup-kiosk-bg-comments, .popup-kiosk-bg-nobarcode, .popup-kiosk-bg-barcode, .popup-kiosk-bg-selectbarcode, .popup-kiosk-bg-serialized, .popup-header-search, .merge-pop-up-bg, .custom-field-pop-up-bg, 
+.update-custom-field-pop-up-bg, .category-pop-up-bg, .low-inventory-alerts-pop-up-bg, .size-chart-updates-pop-up-bg, .roster-changes-pop-up-bg, .password-pop-up-bg, .popup-kiosk-bg-cartwarning, .popup-transaction-bg, 
+.confirm-pop-up-bg-assignyear, .add-serial, .inv-edit-transaction{
+    height: 100vh;
+}
+.popup-kiosk-bg-nobarcode .pop-up, .popup-kiosk-bg-barcode .pop-up, .popup-kiosk-bg-serialized .pop-up, .popup-kiosk-bg-cartwarning .pop-up{
+    width: 500px;
+    height: 275px;
+}
+.popup-kiosk-bg-selectbarcode .pop-up{
+    width: 600px;
+    height: 350px;
+}
+.popup-kiosk-bg-comments .pop-up{
+    height: 400px;
+}
+.popup-kiosk-bg-receive .pop-up{
+    height: 560px;
+}
+.popup-kiosk-body, .popup-transaction-body{
+    display: flex;
+    flex-direction: column;
+}
+.merge-pop-up-bg, .custom-field-pop-up-bg, .update-custom-field-pop-up-bg, .category-pop-up-bg{
+    left: -20px;
+}
+.pop-up{
+    width: 600px;
+    height: 520px;
+    border-radius: 6px;
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.5);
+    background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+.merge-pop-up, .confirm-pop-up, .custom-field-pop-up, .update-custom-field-pop-up, .category-pop-up, .password-pop-up{
+    width: 450px;
+    height: 300px;
+    border-radius: 6px;
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.5);
+}
+
+.custom-field-pop-up, .update-custom-field-pop-up{
+    width: 500px;
+    height: 350px;
+}
+
+.transaction-pop-up{
+    height: 615px;
+    width: 625px;
+}
+
+.popup-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 4rem;
+}
+.popup-header .text{
+    color: #333;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.popup-body{
+    display: flex;
+    padding: 0 1rem;
+    height: calc(100% - 7rem);
+    position: absolute;
+    z-index: 2;
+    top: 4rem;
+    width: 100%;
+    padding-bottom: 3rem;
+}
+.barcode-popup-body, .cartwarning-popup-body{
+    justify-content: center;
+    text-align: center;
+    height: calc(100% - 8.5rem);
+}
+.selectbarcode-popup-body{
+    padding: 1rem 0!important;
+    overflow: auto;
+    z-index: 0;
+    height: calc(100% - 8.5rem);
+}
+.merge-popup-body, .custom-field-popup-body, .update-custom-field-popup-body, .category-popup-body, .password-popup-body{
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.5px;
+    color: #333333;
+    padding: 1rem ;
+    align-items: flex-start;
+    z-index: 2;
+
+}
+
+.custom-field-popup-body>div, .update-custom-field-popup-body>div{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.confirm-popup-body{
+    align-items: center;
+    justify-content: center;
+}
+.issueReport-pop-up-bg{
+    top: 60px;
+}
+.issueReport-popup-body{
+    padding: 0.75rem 0;
+    flex-direction: column;
+}
+.dashboard-popup-body{
+    padding: 0;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+.col:first-child{
+    border-right: solid 1px #ccc;
+    padding-right: 1rem;
+    padding-top: 1rem;
+}
+.col:last-child{
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+
+.popup-footer{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.35);
+    position: absolute;
+bottom: 0;
+width: 100%;
+z-index: 1;
+height: 4rem;
+background-color: white;
+}
+.merge-popup-footer, .confirm-popup-footer, .barcode-popup-footer, .custom-field-popup-footer, .update-custom-field-popup-footer, .category-popup-footer, .password-popup-footer{
+    justify-content: flex-end;
+}
+.negative .popup-footer .blue-button{
+    background-color: #fff;
+    color: #d0021b;
+    border: solid #d0021b 1px;
+}
+.negative .popup-footer .blue-text-button{
+    color: #333;
+}
+.popup-footer .footer-text{
+    font-size: 10px;
+    color: #999;
+}
+.col{
+    width: 50%!important;
+    overflow-y: scroll;
+}
+.col-fields{
+    width: 50%!important;
+
+}
+.col >div, .col-fields>div{
+margin: 0.5rem;
+}
+.cross{
+    padding-right: 1.5rem;
+}
+.grey{
+    background-color: #ececec!important;
+}
+.cross:after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0px;
+    width: 20PX;
+    height: 20PX;
+    background-image: url("../ico/remove-from-group.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.drag-text{
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: #cccccc;
+    padding: 2rem 0;
+    font-size: 0.9rem;  
+pointer-events: none;}
+.popup-body .input-field,.popup-body .input-field *{
+    cursor: pointer!important;
+}
+.pop-up .image{
+    cursor: pointer;
+}
+.fields{
+    display: flex;
+    flex-direction: row;
+}
+
+.blue-button{
+    background-color: #1565c0;
+    color: #ffffff;
+    padding: 12px 16px;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.blue-text-button{
+    color: #1565c0;
+    background-color: #ffffff;
+    padding: 12px 16px;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.blue{
+    color: #1565c0;
+    cursor: pointer;
+}
+
+.popup-kiosk-body .desc, .popup-transaction-body .desc{
+    display: flex;
+    align-items: center;
+}
+.popup-kiosk-body .desc img, .popup-transaction-body .desc img{
+    height: 6rem;
+    width: 6rem;
+    margin-right: 1rem;
+}
+
+.popup-kiosk-body, .popup-transaction-body{
+    padding: 1rem;
+}
+
+.popup-kiosk-body .select-selected, .popup-transaction-body .select-selected {
+padding-top: 0;
+}
+
+.black-square {
+    width: 20px;
+    height: 20px;
+    background-color: #333333;
+    border-radius: 3px;
+    margin: 0 3px;
+    padding: 4px 4px 6px 6px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.qty-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.black-square-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.qty-row .input-field {
+    height: 30px;
+    width: 50px;
+    transform: translateY(-17%);
+    margin: 0 10px;
+    padding-bottom: 0;
+    cursor: text!important;
+}
+
+.qty-row .input-field * {
+    cursor: text!important;
+}
+
+.barcode-row, .dashboard-popup-row, .sizechart-update-row, .roster-changes-row, .add-serial-row, .adjustqty-row{
+    display: flex;
+    flex-direction: row;
+    border-bottom: solid 1px #ccc;
+    padding: 1rem;
+    align-items: center;
+}
+
+.adjustqty-row{
+    padding: 1rem 0;
+    border: none;
+    width: 100%;
+}
+
+.sizechart-update-row, .roster-changes-row{
+    justify-content: space-between;
+}
+
+.inner-sizechart-update-row, .inner-roster-changes-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.dashboard-popup-row img, .inner-sizechart-update-row img, .inner-roster-changes-row img, .add-serial-row img{
+    border-radius: 6px;
+    height: 50px;
+    width: 50px;
+}
+
+.inner-sizechart-update-row .lock-pic, .inner-roster-changes-row .lock-pic{
+    height: auto;
+    width: auto;
+    margin-right: 0.5rem;
+    border-radius: initial;
+}
+
+.sizechart-update-row .checkbox-container{
+    margin: 0;
+    margin-right: 30px;
+    height: auto;
+}
+
+.selectbarcode-popup-body input, .adjust-qty-body input{
+    width: auto;
+    margin-right: 10px;
+}
+
+.send-popup{
+    height: 410px;
+}
+
+.send-red-text{
+    color: #d0021b;
+    transform: translateY(5px);
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.custom-field-checkbox-row{
+    display: flex;
+}
+
+.custom-field-checkbox{
+    transform: translateY(-2px);
+}
+
+.merge-confirm-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}
+
+.reference-num-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 2;
+    margin-top: 5px;
+}
+
+.red-button{
+    color: #d0021b;;
+    border: solid 1px;
+    background-color: initial;
+}
+
+.cancel-search{
+    width: 15px;
+    display: none;
+}
+
+#itemsearchserial{
+    overflow: inherit;
+    overflow-y: scroll;
+}
