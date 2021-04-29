@@ -15,6 +15,50 @@
     <link rel="stylesheet" href="./css/formStyles.css">
     <link rel="stylesheet" href="./css/kiosk.css">
     <link rel="stylesheet" href="./css/pop-up.css">
+    <script>
+        function setEditTransactionValues(rownum) {
+            for (i = 1; i <= 4; i++) {
+                if (rownum == i) {
+                    if (document.getElementById("commTypei")) {
+                        document.getElementById("commentDropdown").querySelector(".select-selected").innerHTML = document.getElementById("commTypei").innerHTML;
+                    }
+                    else {
+                        document.getElementById("commentDropdown").querySelector(".select-selected").innerHTML = "&nbsp;";
+                    }
+                    document.updatecart.cart_id.value = document.results.c_cart_id_i.value;
+                    document.getElementById('popup-item-avatar').innerHTML 
+                        = '<img src="'+ document.results.c_item_avatar_i.value + '" alt="Item Image">';
+                    document.getElementById('popup-item-id').innerHTML 
+                        = document.results.c_item_id_i.value;
+                    document.getElementById('popup-description').innerHTML 
+                        = document.results.c_description_i.value;
+                    document.getElementById('popup-manuf-model').innerHTML 
+                            = document.results.c_manuf_model_i.value;
+                    if (document.results.c_serial_i.value.length != 0) {
+                        document.getElementById('popup-item-size').innerHTML 
+                        = document.results.c_item_size_i.value + " (" + document.results.c_serial_i.value + ")";
+                    } else {
+                        document.getElementById('popup-item-size').innerHTML 
+                        = document.results.c_item_size_i.value;
+                    }
+                    if (document.results.c_qty_i) {
+                        document.getElementById('popup-qty').innerHTML 
+                            = '<input type="text" style="text-align: center;" id="qty" name="qty" value="'+ document.getElementById(document.results.c_cart_id_i.value).innerHTML +'">';
+                    } 
+                    document.getElementById('popup-created-by').innerHTML 
+                        = document.results.c_created_by_i.value;
+                    document.getElementById('popup-trans-date').innerHTML 
+                        = document.results.c_trans_date_i.value;
+                    document.getElementById('popup-trans-time').innerHTML 
+                        = document.results.c_trans_time_i.value;
+                    if (document.results.c_comments_i.value) {
+                        document.getElementById('popup-comments').innerHTML 
+                            = document.results.c_comments_i.value;
+                    } 
+                }
+            }
+        }    
+    </script>
 </head>
 
 <body class="removeKioskResults">
@@ -31,18 +75,17 @@
                     <img src="./img/aurora-borealis.jpeg" alt="">
                     <div>
                         <div>
-                            <b>Item ID: </b> <span>47819</span>
+                            <b>Model Number: </b> <span id="model_num"></span>
                         </div>
                         <div>
-                            <b>Description: </b> <span>AF Baseline HL Short Powderkeg Blue AFS Deprecated Steeltown
-                                Gold</span>
+                            <b>Description: </b> <span id="description"></span>
                         </div>
                         <div>
-                            <b>Model Number: </b> <span>559909-100</span>
+                            <b>Photographer: </b> <span id="photographer"></span>
                         </div>
                     </div>
                 </div>
-                <div><b>Size:</b> M</div>
+                
                 <div class="qty-row">
                     <b>Quantity:</b>
                     <div class="input-field">
@@ -54,31 +97,22 @@
                     </div>
                 </div>
                 <div class="custom-select sport no-label" style="width:200px; padding: 0px; margin: 0px;">
-                    <label for="Comment Type" style="font-size: 10px;">&nbsp;</label>
-                    <select name="Sport">
-                        <option value="default">Comment Type</option>
-                        <option value="baseball">Baseball</option>
-                        <option value="basketball-m">Basketball, Men's
-                        </option>
-                        <option value="basketball-w">Basketball, Women's
-                        </option>
-
+                    <label for="Size" style="font-size: 10px;">&nbsp;</label>
+                    <select name="size">
+                        <option value='30x20'>20x20</option>
+                        <option value='60x60'>60x60</option>
+                        <option value='80x80'>80x80</option>
                     </select>
-
                 </div>
+
                 <div class="textarea" style="position: relative; height: 150px;  width: 100%; margin-top: 1rem;">
-                    <label for="Item Description" style="position: absolute; top: 0rem; left: 0.5rem; font-size: 12px;color: #999999!important;
-              ">Comment
+                    <label for="Item Description" style="position: absolute; top: 0rem; left: 0.5rem; font-size: 12px;color: #999999!important;">Note to the seller
                     </label>
                     <textarea name="" id="" cols="30" rows="10" style="padding: 0rem; position: absolute; background-color: transparent; top: 0; left: 0; height: 100%; width: 100%; outline: none; border: none; resize: none;  border-radius: 3px;
                 border: solid 1px #cccccc; padding: 1.25rem 0.5rem;   font-family: 'Roboto', sans-serif;"></textarea>
                 </div>
             </div>
             <div class="popup-footer">
-                <div class="footer-text">
-                    Created - Coach Carrigan 04/17/2019 at 2:53PM
-                </div>
-
                 <div class="footer-buttons" style="display: flex; flex-direction: row;">
                     <div class="blue-text-button">
                         Cancel
@@ -108,10 +142,9 @@
                 <div class="results">
                     <table>
                         <tr>
-                            <th>Item Photo</th>
-                            <th>Description/Comments</th>
+                            <th>Photo</th>
+                            <th>Description</th>
                             <th>Size</th>
-                            <th>Now On-Hand</th>
                             <th>Qty</th>
                             <th>Price</th>
                             <th>Total</th>
@@ -123,14 +156,19 @@
                                 <img src="./img/aurora-borealis.jpeg" alt="Cloth" class="item-photo">
                             </td>
                             <td>
-                                <div>559909-100</div>
-                                <div> Baseline HL Short Powderkeg Blue AFS</div>
-                                <div> Depreciated Steeltown Gold</div>
-                                <div>Bowl Award | Champions</div>
+                                <div>Model #: 1023</div>
+                                <div>Aurora Borealis</div>
+                                <div>Photographer: Bob Smith</div>
+                                <div>Winter 2021</div>
                             </td>
-                            <td>M</td>
-                            <td>48</td>
-                            <td>- 2 +</td>
+                            <td>60x60</td>
+                            <td>
+                                <div class="qty-row">
+                                    <div class="black-square-results">-</div>
+                                    <div>2</div>
+                                    <div class="black-square-results">+</div>
+                                </div>
+                            </td>
                             <td>$37.50</td>
                             <td>$75.00</td>
                             <td>
@@ -151,8 +189,13 @@
                                 <div>Bowl Award | Champions</div>
                             </td>
                             <td>M</td>
-                            <td>48</td>
-                            <td>- 2 +</td>
+                            <td>
+                                <div class="qty-row">
+                                    <div class="black-square-results">-</div>
+                                    <div>2</div>
+                                    <div class="black-square-results">+</div>
+                                </div>
+                            </td>
                             <td>$37.50</td>
                             <td>$75.00</td>
                             <td>
@@ -173,8 +216,13 @@
                                 <div>Bowl Award | Champions</div>
                             </td>
                             <td>M</td>
-                            <td>48</td>
-                            <td>- 2 +</td>
+                            <td>
+                                <div class="qty-row">
+                                    <div class="black-square-results">-</div>
+                                    <div>2</div>
+                                    <div class="black-square-results">+</div>
+                                </div>
+                            </td>
                             <td>$37.50</td>
                             <td>$75.00</td>
                             <td>
@@ -195,8 +243,13 @@
                                 <div>Bowl Award | Champions</div>
                             </td>
                             <td>M</td>
-                            <td>48</td>
-                            <td>- 2 +</td>
+                            <td>
+                                <div class="qty-row">
+                                    <div class="black-square-results">-</div>
+                                    <div>2</div>
+                                    <div class="black-square-results">+</div>
+                                </div>
+                            </td>
                             <td>$37.50</td>
                             <td>$75.00</td>
                             <td>
