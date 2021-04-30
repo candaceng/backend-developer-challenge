@@ -172,7 +172,4 @@ $(document).ready(function () {
         }
     })
     $(document.querySelector(".reference-num-row .select-items")).addClass("ref-dropdown")
-    $(window).resize(function() {
-        detectBrowserSize();
-    });
 })

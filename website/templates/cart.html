@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="./css/kiosk.css">
     <link rel="stylesheet" href="./css/pop-up.css">
     <script>
+        let model_nums = [1023, 1323, 1030]
+        let descriptions = ["Aurora Borealis", "Ocean Sunset", "Neon Forest"]
+        let artists = ["Bob Smith", "Jane Doe", "John Doe"]
         function setEditTransactionValues(rownum) {
             for (i = 1; i <= 4; i++) {
                 if (rownum == i) {
@@ -58,6 +61,42 @@
                 }
             }
         }    
+        function changeQuantity(type) {
+            if (document.getElementById('qty')) {
+                var currentQty = document.getElementById('qty').value;
+                if (type == 'add') {
+                    document.getElementById('qty').value = parseInt(currentQty, 10) + 1;
+                }
+                else {
+                    document.getElementById('qty').value = Math.max(0, parseInt(currentQty, 10) - 1);
+                }
+            }
+        }
+        function updateQuantity(cart_id, action) {
+            var qty = document.getElementById(cart_id).innerHTML;
+            if (action == 'increment') {
+                qty = parseInt(qty) + 1;
+                document.getElementById("total-qty").innerHTML = parseInt(document.getElementById("total-qty").innerHTML) + 1;
+                if (Number.isNaN(parseFloat(document.getElementById(String(cart_id) + "_price").getAttribute("name")))) {
+                    
+                } else {
+                    document.getElementById("end-total").innerHTML = "$" + (parseFloat(document.getElementById("end-total").innerHTML.replace(/[^0-9.-]+/g,"")) + parseFloat(document.getElementById(String(cart_id) + "_price").getAttribute("name"))).toFixed(2);
+                }
+            } else {
+                qty = Math.max(0, qty - 1);
+                document.getElementById("total-qty").innerHTML = Math.max(0, parseInt(document.getElementById("total-qty").innerHTML) - 1);
+                if (Number.isNaN(parseFloat(document.getElementById(String(cart_id) + "_price").getAttribute("name")))) {
+                } else {
+                    document.getElementById("end-total").innerHTML = "$" + (Math.max(0, parseFloat(document.getElementById("end-total").innerHTML.replace(/[^0-9.-]+/g,"")) - parseFloat(document.getElementById(String(cart_id) + "_price").getAttribute("name")))).toFixed(2);
+                }
+                
+            }
+            if (Number.isNaN(parseFloat(document.getElementById(String(cart_id) + "_price").getAttribute("name")))) {
+                document.getElementById(String(cart_id) + "_total").innerHTML = "$" + parseInt(0).toFixed(2);
+            } else {
+                document.getElementById(String(cart_id) + "_total").innerHTML = "$" + (parseFloat(document.getElementById(String(cart_id) + "_price").getAttribute("name")) * parseInt(qty)).toFixed(2);
+            }  
+        }
     </script>
 </head>
 
@@ -156,10 +195,9 @@
                                 <img src="./img/aurora-borealis.jpeg" alt="Cloth" class="item-photo">
                             </td>
                             <td>
-                                <div>Model #: 1023</div>
+                                <div>1023</div>
                                 <div>Aurora Borealis</div>
-                                <div>Photographer: Bob Smith</div>
-                                <div>Winter 2021</div>
+                                <div>Bob Smith</div>
                             </td>
                             <td>60x60</td>
                             <td>
@@ -169,8 +207,8 @@
                                     <div class="black-square-results">+</div>
                                 </div>
                             </td>
-                            <td>$37.50</td>
                             <td>$75.00</td>
+                            <td>$150.00</td>
                             <td>
                                 <img class="show-popup" src="./ico/edit-pen.svg" alt="Edit Pen">
                             </td>
@@ -180,15 +218,14 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="./img/aurora-borealis.jpeg" alt="Cloth" class="item-photo">
+                                <img src="./img/ocean-sunset.jpg" alt="Cloth" class="item-photo">
                             </td>
                             <td>
-                                <div>559909-100</div>
-                                <div> Baseline HL Short Powderkeg Blue AFS</div>
-                                <div> Depreciated Steeltown Gold</div>
-                                <div>Bowl Award | Champions</div>
+                                <div>1323</div>
+                                <div>Ocean Sunset</div>
+                                <div>Jane Doe</div>
                             </td>
-                            <td>M</td>
+                            <td>10x10</td>
                             <td>
                                 <div class="qty-row">
                                     <div class="black-square-results">-</div>
@@ -196,8 +233,8 @@
                                     <div class="black-square-results">+</div>
                                 </div>
                             </td>
-                            <td>$37.50</td>
-                            <td>$75.00</td>
+                            <td>$25.00</td>
+                            <td>$50.00</td>
                             <td>
                                 <img class="show-popup" src="./ico/edit-pen.svg" alt="Edit Pen">
                             </td>
@@ -207,42 +244,14 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="./img/aurora-borealis.jpeg" alt="Cloth" class="item-photo">
+                                <img src="./img/neon-forest.jpg" alt="Cloth" class="item-photo">
                             </td>
                             <td>
-                                <div>559909-100</div>
-                                <div> Baseline HL Short Powderkeg Blue AFS</div>
-                                <div> Depreciated Steeltown Gold</div>
-                                <div>Bowl Award | Champions</div>
+                                <div>1030</div>
+                                <div>Neon Forest</div>
+                                <div>John Doe</div>
                             </td>
-                            <td>M</td>
-                            <td>
-                                <div class="qty-row">
-                                    <div class="black-square-results">-</div>
-                                    <div>2</div>
-                                    <div class="black-square-results">+</div>
-                                </div>
-                            </td>
-                            <td>$37.50</td>
-                            <td>$75.00</td>
-                            <td>
-                                <img class="show-popup" src="./ico/edit-pen.svg" alt="Edit Pen">
-                            </td>
-                            <td>
-                                <img src="./ico/remove-from-group.svg" alt="Remove">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="./img/aurora-borealis.jpeg" alt="Cloth" class="item-photo">
-                            </td>
-                            <td>
-                                <div>559909-100</div>
-                                <div> Baseline HL Short Powderkeg Blue AFS</div>
-                                <div> Depreciated Steeltown Gold</div>
-                                <div>Bowl Award | Champions</div>
-                            </td>
-                            <td>M</td>
+                            <td>40x40</td>
                             <td>
                                 <div class="qty-row">
                                     <div class="black-square-results">-</div>
@@ -260,19 +269,24 @@
                             </td>
                         </tr>
                     </table>
-                    <div class="conclusion">
-                        <span class="result">
-                            Qty 6
-                        </span>
-                        <span class="result">
-                            Total $37.50
-                        </span>
-                        <div class="btn issue-show-toast">
-                            Issue & Receipt
-                        </div>
-                        <div class="btn issue-show-toast">
-                            Issue
-                        </div>
+                    <div class="conclusion flex-spacebetween">
+                        <div class="flex-spacebetween">
+                            <span class="result">
+                                <span class="inner-result">Qty</span>
+                                <span class="inner-result">
+                                    <b id="total-qty">3</b>
+                                </span>
+                            </span>
+                            <span class="result">
+                                <span class="inner-result">Total</span>
+                                <span class="inner-result">
+                                    <b id="end-total" name=""></b>
+                                </span>
+                            </span>
+                            <div class="btn" style="width: 147px;">
+                                <a href="">Place Order</a>
+                            </div>  
+                        </div> 
                     </div>
                 </div>
             </section>

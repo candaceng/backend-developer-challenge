@@ -1,11 +1,3 @@
-if (document.querySelector(".burger")) {
-    const hamburger = document.querySelector(".burger")
-    const shiftMenuItems = document.querySelector(".shift-menu-items")
-    hamburger.addEventListener("click", () => {
-        shiftMenuItems.classList.toggle('toggleMenu');
-        document.getElementById("filter-arrow").classList.toggle('hide')
-    })
-}
 var x,
     i,
     j,
