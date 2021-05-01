@@ -5,6 +5,9 @@ from .models import Note
 from . import db
 import json
 import os
+from PIL import Image
+from glob import glob
+
 
 app = Flask(__name__)
 
@@ -18,20 +21,23 @@ views = Blueprint('views', __name__)
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
+    files = []
+    for ext in ('*.gif', '*.png', '*.jpg', '*.jpeg'):
+        files.extend(glob(os.path.join(os.getcwd() + "/website/static/img", ext)))
+    for i, file in enumerate(files):
+        files[i] = file.split("/website")[1]
     if request.method == 'POST':
-
         file = request.files['file']
         print(file)
         if file.filename == '':
             flash('No image selected for uploading', category='error')
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(os.getcwd() + "/website/static", filename))
+            file.save(os.path.join(os.getcwd() + "/website/static/img", filename))
             flash('Image successfully uploaded!', category='success')
         else:
             flash('Allowed image types are -> png, jpg, jpeg, gif')
-
-    return render_template("home.html", user=current_user)
+    return render_template("home.html", user=current_user, files=files)
 
     
 

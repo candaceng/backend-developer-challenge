@@ -3,26 +3,7 @@
 {% block content %}
 <br />
 <h1 align="center">My Images</h1>
-<ul class="list-group list-group-flush" id="notes">
-  {% for note in user.notes %}
-    <li class="list-group-item">
-      {{ note.data }}
-      <button type="button" class="close" onClick="deleteNote({{ note.id }})">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </li>
-  {% endfor %}
-</ul>
-<ul class="list-group list-group-flush" id="images">
-  {% for image in user.images %}
-    <li class="list-group-item">
-      <img src="{{ image.link }}" alt="{{ image.name }}">
-      <button type="button" class="close" onClick="deleteImage({{ image.id }})">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </li>
-  {% endfor %}
-</ul>
+
 <form method="POST" enctype="multipart/form-data">
   <label class="form-label" for="customFile">Upload an Image</label>
   <input type="file" class="form-control" name="file" id="customFile"/>
@@ -31,4 +12,15 @@
     <button type="submit" class="btn btn-primary">Add Image</button>
   </div>
 </form>
+
+<ul class="list-group list-group-flush" id="images">
+  {% for file in files %}
+    <li class="list-group-item">
+      <img src="{{ file }}" alt="Image" style="height: 100px; width: 100px;" class="center">
+      <button type="button" class="close" onClick="">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </li>
+  {% endfor %}
+</ul>
 {% endblock %}
