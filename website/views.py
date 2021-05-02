@@ -21,6 +21,7 @@ views = Blueprint('views', __name__)
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
+    os.makedirs(os.getcwd() + "/website/static/img", exist_ok=True)
     files = []
     for ext in ('*.gif', '*.png', '*.jpg', '*.jpeg'):
         files.extend(glob(os.path.join(os.getcwd() + "/website/static/img", ext)))
