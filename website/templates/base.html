@@ -31,10 +31,10 @@
           <a class="nav-item nav-link" id="login" href="/login">Login</a>
           <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
           {% endif %}
-          <ul class="navbar-nav ml-auto">
-            {{ user.first_name }}
-          </ul>
         </div>
+        <ul class="navbar-nav ml-auto navbar-right" style="color: #999; margin-right: 10px;">
+          {{ user.first_name }}
+        </ul>
       </div>
     </nav>
 

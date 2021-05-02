@@ -17,9 +17,12 @@
   {% for file in files %}
     <li class="list-group-item">
       <img src="{{ file }}" alt="Image" style="height: 100px; width: 100px;" class="center">
-      <button type="button" class="close" onClick="">
-        <span aria-hidden="true">&times;</span>
-      </button>
+      <form method="POST">
+          <button type="submit" class="close" name="delete" value="{{ file }}">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </form>
+      </li>
     </li>
   {% endfor %}
 </ul>

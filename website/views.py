@@ -27,41 +27,18 @@ def home():
     for i, file in enumerate(files):
         files[i] = file.split("/website")[1]
     if request.method == 'POST':
-        file = request.files['file']
-        print(file)
-        if file.filename == '':
-            flash('No image selected for uploading', category='error')
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(os.getcwd() + "/website/static/img", filename))
-            flash('Image successfully uploaded!', category='success')
+        if request.form.get("delete") == "" or not request.form.get("delete"):
+            file = request.files['file']
+            if file.filename == '':
+                flash('No image selected for uploading', category='error')
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(os.getcwd() + "/website/static/img/", filename))
+                flash('Image successfully uploaded! Please refresh the page to view your new image.', category='success')
+            else:
+                flash('Allowed image types are -> png, jpg, jpeg, gif', category="error")
         else:
-            flash('Allowed image types are -> png, jpg, jpeg, gif')
+            filename = request.form['delete']
+            if os.path.exists(os.getcwd() + "/website" + filename):
+                os.remove(os.getcwd() + "/website" + filename)
     return render_template("home.html", user=current_user, files=files)
-
-    
-
-
-@views.route('/delete-note', methods=['POST'])
-def delete_note():
-    note = json.loads(request.data)
-    noteId = note['noteId']
-    note = Note.query.get(noteId)
-    if note:
-        if note.user_id == current_user.id:
-            db.session.delete(note)
-            db.session.commit()
-
-    return jsonify({})
-
-@views.route('/delete-image', methods=['POST'])
-def delete_image():
-    image = json.loads(request.data)
-    ImageId = image['ImageId']
-    image = Image.query.get(imageId)
-    if image:
-        if image.user_id == current_user.id:
-            db.session.delete(image)
-            db.session.commit()
-
-    return jsonify({})
