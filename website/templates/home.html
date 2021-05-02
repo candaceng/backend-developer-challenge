@@ -2,7 +2,13 @@
 {% block title %}Home{% endblock %} 
 {% block content %}
 <br />
-<h1 align="center">My Images</h1>
+<h1 align="center">
+  {{ user.first_name }}<!--
+  -->{% if user.first_name %}<!--
+    -->'s
+  {% endif %}
+  Images
+</h1>
 
 <form method="POST" enctype="multipart/form-data">
   <label class="form-label" for="customFile">Upload an Image</label>
