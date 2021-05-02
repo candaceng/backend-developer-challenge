@@ -26,6 +26,7 @@ def home():
         files.extend(glob(os.path.join(os.getcwd() + "/website/static/img", ext)))
     for i, file in enumerate(files):
         files[i] = file.split("/website")[1]
+        files[i] = files[i].replace("\\", "/")
     if request.method == 'POST':
         if request.form.get("delete") == "" or not request.form.get("delete"):
             file = request.files['file']
@@ -34,6 +35,7 @@ def home():
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(os.getcwd() + "/website/static/img/", filename))
+                files.append("/static/img/" + filename)
                 flash('Image successfully uploaded! Please refresh the page to view your new image.', category='success')
             else:
                 flash('Allowed image types are -> png, jpg, jpeg, gif', category="error")
@@ -41,4 +43,5 @@ def home():
             filename = request.form['delete']
             if os.path.exists(os.getcwd() + "/website" + filename):
                 os.remove(os.getcwd() + "/website" + filename)
+                files.remove(filename)
     return render_template("home.html", user=current_user, files=files)
