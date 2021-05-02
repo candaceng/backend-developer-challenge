@@ -31,12 +31,12 @@ def home():
         if request.form.get("delete") == "" or not request.form.get("delete"):
             file = request.files['file']
             if file.filename == '':
-                flash('No image selected for uploading', category='error')
-            if file and allowed_file(file.filename):
+                flash('Please choose a file to upload first', category='error')
+            elif file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(os.getcwd() + "/website/static/img/", filename))
                 files.append("/static/img/" + filename)
-                flash('Image successfully uploaded! Please refresh the page to view your new image.', category='success')
+                flash('Image uploaded successfully!', category='success')
             else:
                 flash('Allowed image types are -> png, jpg, jpeg, gif', category="error")
         else:

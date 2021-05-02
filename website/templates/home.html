@@ -9,24 +9,28 @@
   {% endif %}
   Images
 </h1>
-
+<br />
 <form method="POST" enctype="multipart/form-data">
-  <label class="form-label" for="customFile">Upload an Image</label>
-  <input type="file" class="form-control" name="file" id="customFile"/>
-  <br />
   <div align="center">
-    <button type="submit" class="btn btn-primary">Add Image</button>
+    <label class="form-label" for="customFile">Upload an Image</label>
+    <input type="file" class="form-control" name="file" id="customFile" style="width:230px;"/>
+    <br />
+    <div style="margin-left:15px;">
+      <button type="submit" class="btn btn-primary">Add Image</button>
+    </div>
   </div>
 </form>
-
+<hr />
 <ul class="list-group list-group-flush" id="images">
   {% for file in files %}
     <li class="list-group-item">
-      <img src="{{ file }}" alt="Image" style="height: 100px; width: 100px;" class="center">
+      <img src="{{ file }}" alt="Image" style="height:100px; width:100px; transform:translateY(30px);" class="center">
       <form method="POST">
-          <button type="submit" class="close" name="delete" value="{{ file }}">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <div style="transform:translateY(-30px);">
+            <button type="submit" class="close" name="delete" value="{{ file }}">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
       </form>
       </li>
     </li>
