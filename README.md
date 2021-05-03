@@ -13,7 +13,7 @@ You can view the app [here](https://backend-developer-challenge.herokuapp.com/).
 |    Add Image   |  Click an item from the dropdown  |      The selected image appears below       |
 |  Delete Image  |         Click the x icon          | The selected image is removed from the list |
 
-
+## Sample screens
 ![Sign In](https://github.com/candaceng/backend-developer-challenge/blob/main/website/demo/sign_up.JPG)
 ![Login](https://github.com/candaceng/backend-developer-challenge/blob/main/website/demo/login.JPG)
 ![Choose Category](https://github.com/candaceng/backend-developer-challenge/blob/main/website/demo/choose_category.png)
