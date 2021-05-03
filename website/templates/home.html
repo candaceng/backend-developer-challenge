@@ -23,20 +23,26 @@
 <form method="POST">
   <div align="center">
     <label class="form-label">Choose a Category: </label>
-    <select class="form-control" name="note" onchange="this.form.submit()" style="width: 20%">
+    <select class="form-control" name="note" onchange="this.form.submit()" style="width:20%;">
       <option value="">&nbsp;</option>
       <option value="airplane">Airplane</option>
       <option value="baboon">Baboon</option>
       <option value="boat">Boat</option>
       <option value="cat">Cat</option>
       <option value="fruits">Fruits</option>
+      <option value="mountain">Mountain</option>
+      <option value="peppers">Peppers</option>
+      <option value="pool">Pool</option>
+      <option value="sails">Sails</option>
+      <option value="tulips">Tulips</option>
+      <option value="watch">Watch</option>
     </select>
   </div>
 </form>
 <hr />
 <ul class="list-group list-group-flush" id="notes">
   {% for note in user.notes %}
-  <img src="https://homepages.cae.wisc.edu/~ece533/images/{{ note.data }}.png" alt="Image" style="height:100px; width:100px; transform:translateY(30px);" class="center">
+  <img src="https://homepages.cae.wisc.edu/~ece533/images/{{ note.data }}.png" alt="Image" style="height:100px; width:100px; transform:translateY(30px); border-radius:10%;" class="center">
   <div style="transform:translateY(-30px);">
     <button type="button" class="close" onClick="deleteNote({{ note.id }})">
       <span aria-hidden="true">&times;</span>
